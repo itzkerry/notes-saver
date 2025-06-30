@@ -2,7 +2,12 @@
 
 A full-stack note-taking web application built with the **MERN stack** (MongoDB, Express.js, React, Node.js) and **Redux Toolkit**. Notes Saver allows users to create, update, delete, and view notes with a clean and responsive UI. It also supports authentication, dark mode, and live preview.
 
----
+<p align="center">
+  <a href="https://notes-saver-nine.vercel.app/" target="_blank">
+    🔗 <strong>Live Demo</strong>
+  </a>
+</p>
+
 
 ## 🚀 Features
 
@@ -22,7 +27,7 @@ A full-stack note-taking web application built with the **MERN stack** (MongoDB,
 
 | Light Mode | Dark Mode |
 |------------|-----------|
-| ![light](screenshots/light.png) | ![dark](screenshots/dark.png) |
+| ![light](screenshotLight.png) | ![dark](screenshotDark.png) |
 
 > You can replace these with your actual screenshots.
 
