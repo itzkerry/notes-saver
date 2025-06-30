@@ -27,7 +27,7 @@ A full-stack note-taking web application built with the **MERN stack** (MongoDB,
 
 | Light Mode | Dark Mode |
 |------------|-----------|
-| ![light](screenshotLight.png) | ![dark](screenshotDark.png) |
+| ![light](screenshots/light.png) | ![dark](screenshots/dark.png) |
 
 > You can replace these with your actual screenshots.
 
