@@ -10,7 +10,6 @@ import { fetchNotes } from './features/notes/noteThunks'
 import { useDispatch } from 'react-redux'
 import toast from 'react-hot-toast'
 
-
 const App = () => {
 
   const [showLogin, setShowLogin] = useState(true);

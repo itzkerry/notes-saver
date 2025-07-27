@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -6,12 +6,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../features/user/userThunk";
+import { Eye, EyeOff } from "lucide-react";
 
 
-const LoginOverlay = ({onSuccess}) => {
+const LoginOverlay = ({ onSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isNewUser, setIsNewUser] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const isLoading = useSelector((state) => state.user.isLoading);
   const dispatch = useDispatch();
 
@@ -21,11 +23,11 @@ const LoginOverlay = ({onSuccess}) => {
       return;
     }
     const user = { userName: username, password, isNewUser };
-    try{
+    try {
       const res = await dispatch(loginUser(user)).unwrap();
       toast.success("Logged in successfully");
       onSuccess();
-    }catch(err){
+    } catch (err) {
       toast.error(err || 'Login Failed');
     }
   };
@@ -45,20 +47,30 @@ const LoginOverlay = ({onSuccess}) => {
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 relative">
           <Label htmlFor="password">Password</Label>
           <Input
             id="password"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            onClick={() => setShowPassword((prev) => !prev)}
+            className="absolute right-2 top-[70%] -translate-y-1/2 h-6 w-6 p-0 text-muted-foreground"
+            tabIndex={-1}
+          >
+            {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+          </Button>
         </div>
 
         <div className="flex items-center space-x-2">
           <Checkbox id="newUser" checked={isNewUser} onCheckedChange={setIsNewUser}
-          className="data-[state=checked]:bg-indigo-400 data-[state=checked]:border-indigo-400" />
+            className="data-[state=checked]:bg-indigo-400 data-[state=checked]:border-indigo-400" />
           <Label htmlFor="newUser" className="text-sm">I'm a new user</Label>
         </div>
 
